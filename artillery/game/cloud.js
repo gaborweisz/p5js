@@ -3,7 +3,7 @@
  */
 
 class Cloud {
-  constructor(rangeHigh, rangeLow, pos_x, pos_y, width, transparency) {
+  constructor(rangeHigh, rangeLow, pos_x, pos_y, width, transparency, velocity) {
     this.rangeHigh = rangeHigh; //top of the cloud in the canvas
     this.rangeLow = rangeLow; //lowest point of the cloud in the canvas
     this.posX = pos_x
@@ -12,10 +12,15 @@ class Cloud {
     this.transparency = transparency; //transparency of the cloud
     this.cloudRange = [];
     this.generateCloud();
+    this.velocity = velocity
   }
   
   move() {
-    this.posX = this.posX + 1
+    this.posX = this.posX + this.velocity
+    if (this.posX > CANVAS_W) {
+      this.posX = -1 * this.width
+      this.generateCloud()
+    }
   }
 
   generateCloud() {
@@ -27,14 +32,15 @@ class Cloud {
   }
 
   addNoise(value) {
-    let noiseLevel = 150;
+    let noiseLevel = 100;
     let noiseScale = 0.02;
     // Scale input coordinate.
     let nx = noiseScale * value;
     // Compute noise value.
     return noiseLevel * noise(nx);
   }
-
+  
+  
   draw() {
     push();
     translate(0, CANVAS_H);

@@ -27,9 +27,9 @@ class Artirelly {
     //gun barell
     rotate(angleSlider.value() * -1);
     strokeWeight(25);
-    line(this.posX + 10, this.posY, this.posX + velocitySlider.value() / 1.5 , this.posY);
+    line(this.posX + 10, this.posY, this.posX + velocitySlider.value() / 2.5 , this.posY);
     strokeWeight(15);
-    line(this.posX + 10, this.posY, this.posX + 100, this.posY);
+    line(this.posX + 10, this.posY, this.posX + 80, this.posY);
     pop()
   }
 }

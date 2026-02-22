@@ -14,7 +14,7 @@ class Projectile {
   }
 
   move() {
-    this.x += this.v / 50 + 1;
+    this.x += this.v / 20 + 1;
     this.y = this.calcY();
   }
 
@@ -28,19 +28,30 @@ class Projectile {
   }
   
   blast() {
+    this.blasted = true;
+    this.blastX = this.x;
+    this.blastY = this.y;
+    print("blasted")
+
   }
 
   draw() {
     push()
     translate(TRANSLATE_X, TRANSLATE_Y) * -1;
     if (this.blasted == false) {
-      strokeWeight(10);
-      stroke("black");
-      point(this.x*2, this.y*2);
+      if (this.x < 100 && this.x > 50) {
+        strokeWeight(20);
+        stroke("orange");
+        point(this.x, this.y);
+      } else {
+        strokeWeight(10);
+        stroke("black");
+        point(this.x, this.y);
+      }
     } else {
       strokeWeight(20);
       stroke("red");
-      point(this.blastX, this.blastX);
+      circle(this.blastX, this.blastY, 30);
     }
     pop()
   }

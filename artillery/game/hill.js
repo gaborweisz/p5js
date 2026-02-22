@@ -14,12 +14,18 @@ class Hill {
   }
   
   isHit(pos_x,pos_y) {
-    for (let x = 0; x <= this.width; x += 1) {
-      let y = this.hillRange[x];
-      if (pos_x == x && pos_y ==y) {
+    let shift = CANVAS_H - TRANSLATE_Y; //differenc between the coordinate translation of projectile and hills
+      let y = this.hillRange[int(pos_x)];
+      //print (pos_x, abs(pos_y) + shift ,abs(y))
+      if (abs(pos_y) + shift <  abs(y)) {
+       
         return true;
       }
-    }
+
+  }
+  
+  getHeight (pos_x) {
+    return this.hillRange[pos_x]
   }
 
   generateHill() {

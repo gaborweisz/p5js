@@ -16,6 +16,7 @@ class Mountain {
     let up = true;
     let y = random(this.rangeLow, this.rangeHigh);
     for (let x = 0; x <= this.width; x += 1) {
+      
       let step = 0.4;
       if (up) {
         y += step;
